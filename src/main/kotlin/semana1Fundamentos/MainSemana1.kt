@@ -32,6 +32,22 @@ fun retornaPrimo(numero: Int): List<Int> {
     return listaPrimos
 }
 
+
+fun retornaPrimo2(numero: Int): List<Int> {
+    val listaPrimos = mutableListOf<Int>()
+    for (i in 2..numero) {
+        if(i == 2){
+            listaPrimos.add(i)
+        }
+        if (i % 2 == 0 || i % 3 == 0) {
+            continue
+        }else listaPrimos.add(i)
+
+
+    }
+    return listaPrimos
+}
+
 fun ordenarLista(lista: List<Int>): List<Int> = lista.sorted()
 
 fun ordenarListaManual(lista: List<Int>): List<Int> {
@@ -49,6 +65,18 @@ fun ordenarListaManual(lista: List<Int>): List<Int> {
     return listaOrdenada
 }
 
+fun numeroAmstrong(numero: Int): Boolean {
+    val numeroString = numero.toString()
+    val tamanho = numeroString.length
+    var soma = 0
+    for (i in numeroString) {
+        val num = i.toString().toInt()
+        soma += Math.pow(num.toDouble(), tamanho.toDouble()).toInt()
+    }
+
+    return soma == numero
+}
+
 fun main() {
     println("Calculando a soma: ${calcularSoma(listOf(3, 10, 7, 2, 8, 5, 1))}")
     println("Filtrando os pares: ${filtrarPares(listOf(3, 10, 7, 2, 8, 5, 1))}")
@@ -56,6 +84,7 @@ fun main() {
     println("Encontrando o maior: ${encontrarMaior(listOf(3, 10, 7, 2, 8, 5, 1))}")
     println("Encontrando o menor: ${encontrarMenor(listOf(3, 10, 7, 2, 8, 5, 1))}")
     println("Encontrando os primos: ${retornaPrimo(13)}")
+    println("Encontrando os primos2 : ${retornaPrimo2(13)}")
     println("Ordenando a lista: ${ordenarLista(listOf(3, 10, 7, 2, 8, 5, 1))}")
     println("Ordenando a lista manualmente: ${ordenarListaManual(listOf(3, 10, 7, 2, 8, 5, 1))}")
 }
